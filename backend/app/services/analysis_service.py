@@ -174,16 +174,23 @@ def calculate_scores(vision_result: dict) -> dict:
 def determine_heat_risk(
     green_coverage: int,
     shade_score: int,
-) -> str:
-    average_score = (green_coverage + shade_score) / 2
+) -> int:
+    """
+    Return heat risk as a numeric indicator from 0 to 100.
 
-    if average_score < 35:
-        return "High"
+    A higher value represents greater heat risk.
+    A lower value represents better heat comfort.
+    """
 
-    if average_score < 65:
-        return "Medium"
+    heat_protection_score = (
+        green_coverage + shade_score
+    ) / 2
 
-    return "Low"
+    heat_risk = round(
+        100 - heat_protection_score
+    )
+
+    return max(0, min(100, heat_risk))
 
 
 def generate_initial_issues(
@@ -225,6 +232,28 @@ def generate_initial_recommendations(
     issues: list[str],
 ) -> list[dict]:
     recommendations: list[dict] = []
+
+    scene_type = vision_result.get(
+        "scene_type",
+        "",
+    ).lower()
+
+    if scene_type == "non-urban scene":
+        return [
+            {
+                "title": "Confirm urban assessment suitability",
+                "action": (
+                    "Use an image that clearly shows an urban street, "
+                    "neighborhood, public space, parking area, or park "
+                    "for a detailed Canopy AI improvement assessment."
+                ),
+                "impact": (
+                    "Prevents unsupported urban recommendations and "
+                    "improves the relevance of the assessment."
+                ),
+                "priority": "High",
+            }
+        ]
 
     trees = vision_result.get("trees", "").lower()
     shade = vision_result.get("shade", "").lower()
@@ -320,13 +349,13 @@ def generate_summary(
     scene_type = vision_result.get("scene_type", "urban scene")
     heat_risk = scores["heat_risk"]
 
-    if heat_risk == "High":
+    if heat_risk >= 65:
         condition = (
             "The scene has significant improvement potential, especially in "
             "shade, greenery, and pedestrian comfort."
         )
 
-    elif heat_risk == "Medium":
+    elif heat_risk >= 35:
         condition = (
             "The scene has moderate urban quality, with several opportunities "
             "to improve shade, greenery, and walkability."
