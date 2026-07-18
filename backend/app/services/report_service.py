@@ -113,6 +113,19 @@ def get_heat_risk_status(score: int) -> str:
     return "High Risk"
 
 
+def get_status_color(status: str) -> str:
+    status_colors = {
+        "Strong": "#2E7D32",
+        "Moderate": "#C47F00",
+        "Needs Improvement": "#C62828",
+        "Low Risk": "#2E7D32",
+        "Moderate Risk": "#C47F00",
+        "High Risk": "#C62828",
+    }
+
+    return status_colors.get(status, "#557064")
+
+
 def draw_page_header_footer(
     canvas,
     document,
@@ -623,12 +636,84 @@ def generate_pdf_report(project: dict) -> Path:
             ),
 
             Table(
-                [[
-                    Paragraph(
-                        analysis["summary"],
-                        styles["BodyText"],
-                    )
-                ]],
+                [
+                    [
+                        Table(
+                            [
+                                [
+                                    Paragraph(
+                                        (
+                                            "<font color='#176641' size='11'>"
+                                            "<b>AI URBAN ASSESSMENT</b>"
+                                            "</font>"
+                                        ),
+                                        styles["BodyText"],
+                                    )
+                                ],
+                                [
+                                    Paragraph(
+                                        analysis["summary"],
+                                        styles["BodyText"],
+                                    )
+                                ],
+                            ],
+                            colWidths=[412],
+                            style=TableStyle(
+                                [
+                                    (
+                                        "BACKGROUND",
+                                        (0, 0),
+                                        (-1, -1),
+                                        colors.HexColor("#F3F8F5"),
+                                    ),
+                                    (
+                                        "LINEBELOW",
+                                        (0, 0),
+                                        (-1, 0),
+                                        0.5,
+                                        colors.HexColor("#D5E6DC"),
+                                    ),
+                                    (
+                                        "LEFTPADDING",
+                                        (0, 0),
+                                        (-1, -1),
+                                        0,
+                                    ),
+                                    (
+                                        "RIGHTPADDING",
+                                        (0, 0),
+                                        (-1, -1),
+                                        0,
+                                    ),
+                                    (
+                                        "TOPPADDING",
+                                        (0, 0),
+                                        (-1, 0),
+                                        0,
+                                    ),
+                                    (
+                                        "BOTTOMPADDING",
+                                        (0, 0),
+                                        (-1, 0),
+                                        8,
+                                    ),
+                                    (
+                                        "TOPPADDING",
+                                        (0, 1),
+                                        (-1, 1),
+                                        10,
+                                    ),
+                                    (
+                                        "BOTTOMPADDING",
+                                        (0, 1),
+                                        (-1, 1),
+                                        0,
+                                    ),
+                                ]
+                            ),
+                        )
+                    ]
+                ],
                 colWidths=[440],
                 style=TableStyle(
                     [
@@ -642,32 +727,39 @@ def generate_pdf_report(project: dict) -> Path:
                             "BOX",
                             (0, 0),
                             (-1, -1),
-                            0.6,
+                            0.7,
                             colors.HexColor("#B7D4C4"),
+                        ),
+                        (
+                            "LINEBEFORE",
+                            (0, 0),
+                            (0, -1),
+                            4,
+                            colors.HexColor("#176641"),
                         ),
                         (
                             "LEFTPADDING",
                             (0, 0),
                             (-1, -1),
-                            14,
+                            18,
                         ),
                         (
                             "RIGHTPADDING",
                             (0, 0),
                             (-1, -1),
-                            14,
+                            16,
                         ),
                         (
                             "TOPPADDING",
                             (0, 0),
                             (-1, -1),
-                            12,
+                            14,
                         ),
                         (
                             "BOTTOMPADDING",
                             (0, 0),
                             (-1, -1),
-                            12,
+                            14,
                         ),
                     ]
                 ),
@@ -691,16 +783,112 @@ def generate_pdf_report(project: dict) -> Path:
                         "Original Urban Image",
                         styles["Heading2"],
                     ),
-                    Spacer(1, 8),
-                    Image(
-                        str(image_path),
-                        width=5.2 * inch,
-                        height=3.7 * inch,
-                        kind="proportional",
+                    Spacer(1, 6),
+                    Table(
+                        [
+                            [
+                                Image(
+                                    str(image_path),
+                                    width=5.2 * inch,
+                                    height=3.7 * inch,
+                                    kind="proportional",
+                                )
+                            ],
+                            [
+                                Paragraph(
+                                    (
+                                        "<font color='#557064' size='9'>"
+                                        "Uploaded scene used as the visual input "
+                                        "for the urban assessment."
+                                        "</font>"
+                                    ),
+                                    styles["BodyText"],
+                                )
+                            ],
+                        ],
+                        colWidths=[5.45 * inch],
+                        style=TableStyle(
+                            [
+                                (
+                                    "BACKGROUND",
+                                    (0, 0),
+                                    (-1, -1),
+                                    colors.white,
+                                ),
+                                (
+                                    "BOX",
+                                    (0, 0),
+                                    (-1, -1),
+                                    0.7,
+                                    colors.HexColor("#C8DDD1"),
+                                ),
+                                (
+                                    "LINEABOVE",
+                                    (0, 1),
+                                    (-1, 1),
+                                    0.5,
+                                    colors.HexColor("#DCE9E1"),
+                                ),
+                                (
+                                    "ALIGN",
+                                    (0, 0),
+                                    (-1, 0),
+                                    "CENTER",
+                                ),
+                                (
+                                    "LEFTPADDING",
+                                    (0, 0),
+                                    (-1, 0),
+                                    8,
+                                ),
+                                (
+                                    "RIGHTPADDING",
+                                    (0, 0),
+                                    (-1, 0),
+                                    8,
+                                ),
+                                (
+                                    "TOPPADDING",
+                                    (0, 0),
+                                    (-1, 0),
+                                    8,
+                                ),
+                                (
+                                    "BOTTOMPADDING",
+                                    (0, 0),
+                                    (-1, 0),
+                                    8,
+                                ),
+                                (
+                                    "LEFTPADDING",
+                                    (0, 1),
+                                    (-1, 1),
+                                    12,
+                                ),
+                                (
+                                    "RIGHTPADDING",
+                                    (0, 1),
+                                    (-1, 1),
+                                    12,
+                                ),
+                                (
+                                    "TOPPADDING",
+                                    (0, 1),
+                                    (-1, 1),
+                                    7,
+                                ),
+                                (
+                                    "BOTTOMPADDING",
+                                    (0, 1),
+                                    (-1, 1),
+                                    7,
+                                ),
+                            ]
+                        ),
                     ),
-                    Spacer(1, 18),
+                    Spacer(1, 16),
                 ]
-           )
+            )
 
 
     generated_image_url = project.get("generated_image_url")
@@ -743,31 +931,66 @@ def generate_pdf_report(project: dict) -> Path:
                             [
                                 "Green Coverage",
                                 f"{green}%",
-                                get_score_status(green),
+                                Paragraph(
+                                    (
+                                        f"<font color='{get_status_color(get_score_status(green))}'>"
+                                        f"<b>{get_score_status(green)}</b>"
+                                        "</font>"
+                                    ),
+                                    styles["BodyText"],
+                                ),
                             ],
 
                             [
                                 "Walkability",
                                 f"{walkability}%",
-                                get_score_status(walkability),
+                                Paragraph(
+                                    (
+                                        f"<font color='{get_status_color(get_score_status(walkability))}'>"
+                                        f"<b>{get_score_status(walkability)}</b>"
+                                        "</font>"
+                                    ),
+                                    styles["BodyText"],
+                                ),
                             ],
 
                             [
                                 "Shade",
                                 f"{shade}%",
-                                get_score_status(shade),
+                                Paragraph(
+                                    (
+                                        f"<font color='{get_status_color(get_score_status(shade))}'>"
+                                        f"<b>{get_score_status(shade)}</b>"
+                                        "</font>"
+                                    ),
+                                    styles["BodyText"],
+                                ),
                             ],
 
                             [
                                 "Solar Potential",
                                 f"{solar}%",
-                                get_score_status(solar),
+                                Paragraph(
+                                    (
+                                        f"<font color='{get_status_color(get_score_status(solar))}'>"
+                                        f"<b>{get_score_status(solar)}</b>"
+                                        "</font>"
+                                    ),
+                                    styles["BodyText"],
+                                ),
                             ],
 
                             [
                                 "Heat Risk",
                                 str(heat),
-                                get_heat_risk_status(heat),
+                                Paragraph(
+                                    (
+                                        f"<font color='{get_status_color(get_heat_risk_status(heat))}'>"
+                                        f"<b>{get_heat_risk_status(heat)}</b>"
+                                        "</font>"
+                                    ),
+                                    styles["BodyText"],
+                                ),
                             ],
                         ],
                         colWidths=[190, 70, 130],
@@ -841,13 +1064,103 @@ def generate_pdf_report(project: dict) -> Path:
         ]
     )
 
-    for issue in project["analysis"]["issues"]:
-        story.append(
-            Paragraph(
-                f"- {issue}",
-                styles["BodyText"],
-            )
+    for issue_number, issue in enumerate(
+        project["analysis"]["issues"],
+        start=1,
+    ):
+        issue_card = Table(
+            [
+                [
+                    Paragraph(
+                        (
+                            f"<font color='#C62828'>"
+                            f"<b>{issue_number:02d}</b>"
+                            "</font>"
+                        ),
+                        styles["BodyText"],
+                    ),
+                    Paragraph(
+                        issue,
+                        styles["BodyText"],
+                    ),
+                ]
+            ],
+            colWidths=[34, 406],
+            style=TableStyle(
+                [
+                    (
+                        "BACKGROUND",
+                        (0, 0),
+                        (-1, -1),
+                        colors.HexColor("#FFF8F7"),
+                    ),
+                    (
+                        "BOX",
+                        (0, 0),
+                        (-1, -1),
+                        0.6,
+                        colors.HexColor("#E8C5C1"),
+                    ),
+                    (
+                        "LINEBEFORE",
+                        (0, 0),
+                        (0, -1),
+                        4,
+                        colors.HexColor("#C62828"),
+                    ),
+                    (
+                        "VALIGN",
+                        (0, 0),
+                        (-1, -1),
+                        "MIDDLE",
+                    ),
+                    (
+                        "ALIGN",
+                        (0, 0),
+                        (0, -1),
+                        "CENTER",
+                    ),
+                    (
+                        "LEFTPADDING",
+                        (0, 0),
+                        (0, -1),
+                        8,
+                    ),
+                    (
+                        "RIGHTPADDING",
+                        (0, 0),
+                        (0, -1),
+                        8,
+                    ),
+                    (
+                        "LEFTPADDING",
+                        (1, 0),
+                        (1, -1),
+                        12,
+                    ),
+                    (
+                        "RIGHTPADDING",
+                        (1, 0),
+                        (1, -1),
+                        12,
+                    ),
+                    (
+                        "TOPPADDING",
+                        (0, 0),
+                        (-1, -1),
+                        9,
+                    ),
+                    (
+                        "BOTTOMPADDING",
+                        (0, 0),
+                        (-1, -1),
+                        9,
+                    ),
+                ]
+            ),
         )
+
+        story.append(KeepTogether([issue_card, Spacer(1, 7)]))
 
     story.extend(
         [
@@ -869,6 +1182,8 @@ def generate_pdf_report(project: dict) -> Path:
             priority_color = "#F9A825"
         else:
             priority_color = "#2E7D32"
+
+        left_border_color = colors.HexColor(priority_color)
 
         recommendation_card = Table(
             [[
@@ -941,12 +1256,95 @@ def generate_pdf_report(project: dict) -> Path:
                         (-1, -1),
                         12,
                     ),
+                    (
+                        "LINEBEFORE",
+                        (0, 0),
+                        (0, -1),
+                        4,
+                        left_border_color,
+                    ),
                 ]
             ),
         )
 
         story.append(recommendation_card)
         story.append(Spacer(1, 12))
+
+        story.extend(
+            [
+                Spacer(1, 2),
+                Paragraph(
+                    "Assessment Notes",
+                    styles["Heading2"],
+                ),
+                Table(
+                    [
+                        [
+                            Paragraph(
+                                (
+                                    "<font color='#176641'><b>Important:</b></font> "
+                                    "These results are preliminary AI-generated "
+                                    "indicators. Accuracy depends on image quality "
+                                    "and scene suitability, and the report does not "
+                                    "replace professional engineering, planning, "
+                                    "environmental, or municipal review."
+                                ),
+                                styles["BodyText"],
+                            )
+                        ]
+                    ],
+                    colWidths=[440],
+                    style=TableStyle(
+                        [
+                            (
+                                "BACKGROUND",
+                                (0, 0),
+                                (-1, -1),
+                                colors.HexColor("#F6F8F7"),
+                            ),
+                            (
+                                "BOX",
+                                (0, 0),
+                                (-1, -1),
+                                0.6,
+                                colors.HexColor("#D5DEDA"),
+                            ),
+                            (
+                                "LINEBEFORE",
+                                (0, 0),
+                                (0, -1),
+                                4,
+                                colors.HexColor("#176641"),
+                            ),
+                            (
+                                "LEFTPADDING",
+                                (0, 0),
+                                (-1, -1),
+                                14,
+                            ),
+                            (
+                                "RIGHTPADDING",
+                                (0, 0),
+                                (-1, -1),
+                                14,
+                            ),
+                            (
+                                "TOPPADDING",
+                                (0, 0),
+                                (-1, -1),
+                                9,
+                            ),
+                            (
+                                "BOTTOMPADDING",
+                                (0, 0),
+                                (-1, -1),
+                                9,
+                            ),
+                        ]
+                    ),
+                ),
+            ]
+        )
 
     document.build(
         story,
