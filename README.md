@@ -747,16 +747,6 @@ The result is a faster, more accessible, and more intuitive urban analysis exper
 
 **Maysam Abduljalil**
 
-Information Systems Graduate
-
-GitHub
-
-https://github.com/maysamma
-
-LinkedIn
-
-https://www.linkedin.com/in/maysam-m-abduljalil
-
 ---
 
 # 📄 License
