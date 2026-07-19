@@ -1,96 +1,216 @@
-# 🌿 Canopy AI
+# 🌳 Canopy AI
 
-> **AI-powered Urban Improvement Assistant**
+<p align="center">
+  <strong>AI-powered Urban Improvement Assistant</strong><br>
+  Transform urban images into actionable sustainability insights using AI.
+</p>
 
-Canopy AI is an AI-powered platform that helps evaluate streets and urban spaces from a single image.
+<p align="center">
 
-The system analyzes the uploaded scene using multimodal AI, identifies urban characteristics, estimates sustainability indicators, and provides practical recommendations for improving green infrastructure, pedestrian experience, shade, and overall urban quality.
+![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi)
+![React](https://img.shields.io/badge/React-61DAFB?logo=react)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?logo=sqlite)
+![Gemini](https://img.shields.io/badge/Google-Gemini-orange)
+![License](https://img.shields.io/badge/License-Educational-success)
 
-In addition to the analysis, Canopy AI can generate an improved visualization of the same location and produce a professional PDF report summarizing the results.
-
----
-
-## 🎯 Problem Statement
-
-Urban planners, municipalities, architects, and researchers often need a quick way to evaluate existing streets and public spaces.
-
-Traditional assessments usually require:
-- Manual field inspections
-- Multiple software tools
-- Time-consuming documentation
-- Expert interpretation
-
-This makes early-stage urban evaluation slower and more expensive.
-
-Canopy AI provides an AI-assisted preliminary assessment from a single image, helping users identify improvement opportunities within seconds.
-
-> **Disclaimer:**  
-> Canopy AI provides preliminary AI-generated urban indicators. The results are intended to support early-stage decision-making and should not be considered engineering measurements, architectural approval, or municipal approval.
----
-
-# ✨ Key Features
-
-- 📷 Upload a street or neighborhood image.
-- 🤖 AI-powered urban scene analysis using Gemini Vision.
-- 🌳 Estimate Green Coverage.
-- 🚶 Evaluate Walkability.
-- 🌤️ Assess Shade Availability.
-- ☀️ Estimate Solar Potential.
-- 🌡️ Assess Heat Risk.
-- 📋 Detect urban issues automatically.
-- 💡 Generate practical urban improvement recommendations.
-- 🎨 Generate an AI-enhanced visualization of the same location.
-- 📄 Export a professional PDF report.
-- 🗂️ Store projects permanently using SQLite.
-- 📚 Browse previous analyses through Project History.
+</p>
 
 ---
 
-# 🏗️ System Architecture
+# 📖 Overview
 
+**Canopy AI** is an AI-powered platform that analyzes urban environments from a single image.
+
+The system combines computer vision, AI reasoning, and urban planning principles to evaluate streets, neighborhoods, parks, and public spaces.
+
+Users simply upload an image and receive:
+
+- Urban scene analysis
+- Sustainability indicators
+- AI-generated recommendations
+- Professional PDF report
+- AI visualization prompt for urban improvement
+
+Canopy AI is designed as an early-stage decision support tool for municipalities, architects, urban planners, researchers, and students.
+
+---
+
+# ❗ Problem Statement
+
+Evaluating urban environments traditionally requires:
+
+- Field inspections
+- GIS tools
+- Expert analysis
+- Manual documentation
+- Long review cycles
+
+These processes are expensive and time-consuming.
+
+Canopy AI accelerates the first stage of urban assessment by providing AI-generated indicators from a single image in seconds.
+
+> **Disclaimer**
+>
+> Canopy AI provides preliminary AI-generated urban indicators. The results are intended to support early-stage planning and should not replace engineering, architectural, or municipal review.
+
+---
+
+# ✨ Features
+
+- Upload urban images
+- AI-powered scene understanding
+- Urban sustainability assessment
+- Green Coverage estimation
+- Walkability evaluation
+- Shade assessment
+- Solar Potential estimation
+- Heat Risk estimation
+- Automatic issue detection
+- Practical urban recommendations
+- AI visualization prompt generation
+- Professional PDF report generation
+- Project history
+- SQLite persistence
+
+---
+
+# 🤖 AI Workflow
+
+```text
+Upload Image
+      │
+      ▼
+Vision Agent
+      │
+      ▼
+Urban Assessment
+      │
+      ▼
+Recommendation Engine
+      │
+      ▼
+Visualization Prompt
+      │
+      ▼
+Image Generation
+      │
+      ▼
+Professional PDF Report
 ```
-                User
-                  │
-                  ▼
-        React + Vite Frontend
-                  │
-                  ▼
-           FastAPI Backend
-                  │
-     ┌────────────┼────────────┐
-     ▼            ▼            ▼
-Vision AI     SQLite DB    PDF Generator
-     │                         │
-     ▼                         ▼
-Urban Analysis          Professional Report
-     │
-     ▼
-Visualization Generator
+
+---
+
+# 🏗 Multi-Agent Architecture
+
+```text
+                 User
+                   │
+                   ▼
+            React Frontend
+                   │
+                   ▼
+             FastAPI Backend
+                   │
+      ┌────────────┼────────────┐
+      ▼            ▼            ▼
+ Vision Agent  Planner Agent  Report Agent
+                   │
+                   ▼
+        Visualization Agent
 ```
 
 ---
 
-# 🛠️ Technology Stack
+# 📊 Analysis Output
+
+Each project includes:
+
+- Scene Type
+- Trees
+- Buildings
+- Roads
+- Sidewalks
+- Vehicles
+- Empty Spaces
+- Shade
+
+Urban indicators:
+
+- Green Coverage
+- Walkability
+- Shade
+- Solar Potential
+- Heat Risk
+
+AI-generated:
+
+- Summary
+- Current Issues
+- Recommendations
+- Expected Impact
+- Visualization Prompt
+
+---
+
+# 📄 PDF Report
+
+The generated report includes:
+
+- Cover page
+- Overall Urban Score
+- Executive Summary
+- Original Image
+- Assessment Scores
+- Current Issues
+- Recommendations
+- Assessment Notes
+
+---
+
+# 🖼 Screenshots
+
+## Home
+
+![Home](assets/home.png)
+
+## Analysis Results
+
+![Results](assets/result.png)
+
+## Project History
+
+![History](assets/history.png)
+
+## PDF Report
+
+![Report Cover](assets/report1.png)
+
+![Report Assessment & Recommendations ](assets/report2.png)
+```
+
+---
+
+# 🛠 Tech Stack
 
 | Layer | Technology |
-|-------|------------|
+|--------|------------|
 | Frontend | React + Vite |
 | Backend | FastAPI |
-| Database | SQLite + SQLAlchemy |
-| Vision AI | Google Gemini Vision |
-| Image Generation | Google Gemini Image Model |
-| PDF Reports | ReportLab |
+| Database | SQLite |
+| ORM | SQLAlchemy |
+| AI Vision | Google Gemini |
 | Image Processing | Pillow |
-| API Testing | Swagger UI |
-| Version Control | Git & GitHub |
+| Reports | ReportLab |
+| API | REST |
 
 ---
 
 # 📂 Project Structure
 
 ```text
-canopy-ai-starter/
-│
+canopy-ai/
+
 ├── backend/
 │   ├── app/
 │   │   ├── agents/
@@ -102,16 +222,13 @@ canopy-ai-starter/
 │   ├── uploads/
 │   ├── generated/
 │   ├── reports/
-│   ├── canopy.db
-│   └── requirements.txt
+│   └── canopy.db
 │
 ├── frontend/
 │   ├── src/
 │   │   ├── components/
 │   │   ├── pages/
 │   │   └── services/
-│   ├── package.json
-│   └── index.html
 │
 └── README.md
 ```
@@ -120,30 +237,28 @@ canopy-ai-starter/
 
 # 🚀 Installation
 
-## Clone the repository
+## Clone
 
 ```bash
-git clone https://github.com/maysamma/canopy-ai-lite.git
-cd canopy-ai-lite
+git clone https://github.com/maysamma/canopy-ai.git
+
+cd canopy-ai
 ```
 
 ---
 
-## Backend Setup
+## Backend
 
-```powershell
+```bash
 cd backend
 
 python -m venv .venv
 
-.\.venv\Scripts\Activate.ps1
+# Windows
+.venv\Scripts\activate
 
 pip install -r requirements.txt
-```
 
-Run the backend:
-
-```powershell
 uvicorn app.main:app --reload
 ```
 
@@ -153,7 +268,7 @@ Backend:
 http://127.0.0.1:8000
 ```
 
-Swagger UI:
+Swagger:
 
 ```
 http://127.0.0.1:8000/docs
@@ -161,11 +276,9 @@ http://127.0.0.1:8000/docs
 
 ---
 
-## Frontend Setup
+## Frontend
 
-Open a second terminal.
-
-```powershell
+```bash
 cd frontend
 
 npm install
@@ -181,116 +294,74 @@ http://localhost:5173
 
 ---
 
-## Environment Variables
+# ⚙ Environment Variables
 
-Create a `.env` file inside the `backend` folder.
+Create:
+
+```text
+backend/.env
+```
 
 Example:
 
 ```env
 GEMINI_API_KEY=YOUR_API_KEY
+
+GEMINI_MODEL=gemini-2.5-flash
+
 GEMINI_IMAGE_MODEL=gemini-3.1-flash-image
 ```
 
 ---
 
-# 🔌 API Endpoints
+# 📡 API Endpoints
 
 | Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET` | `/api/health` | Check API health status |
-| `POST` | `/api/projects` | Upload an image and create a new analysis project |
-| `GET` | `/api/projects` | Retrieve all saved projects |
-| `GET` | `/api/projects/{project_id}` | Retrieve a specific project |
-| `POST` | `/api/projects/{project_id}/visualization` | Generate an improved urban visualization |
-| `GET` | `/api/projects/{project_id}/report` | Download the PDF report |
+|---------|----------|-------------|
+| GET | `/api/health` | Health check |
+| POST | `/api/projects` | Create project |
+| GET | `/api/projects` | List projects |
+| GET | `/api/projects/{id}` | Get project |
+| POST | `/api/projects/{id}/visualization` | Generate visualization |
+| GET | `/api/projects/{id}/report` | Download PDF |
 
 ---
 
-# 📊 Analysis Output
+# 🗺 Roadmap
 
-Each analysis includes:
-
-- 🌳 Green Coverage
-- 🚶 Walkability
-- 🌤️ Shade
-- ☀️ Solar Potential
-- 🌡️ Heat Risk
-- 🏙️ Detected Urban Scene
-- ⚠️ Current Issues
-- 💡 Recommendations
-- 📈 Expected Impact
-- 📝 AI-generated Summary
+- ✅ Urban image upload
+- ✅ AI analysis
+- ✅ Recommendation engine
+- ✅ Professional PDF reports
+- ✅ SQLite project history
+- ✅ Improved visualization prompt
+- ⏳ Better image generation provider
+- ⏳ Cloud deployment
+- ⏳ User authentication
+- ⏳ Analytics dashboard
 
 ---
 
-# 📸 Screenshots
+# 🔮 Future Improvements
 
-## Home Page
-
-> Upload a street or neighborhood image for AI analysis.
-
-![Home](docs/screenshots/home.png)
-
----
-
-## Analysis Results
-
-> View sustainability indicators, detected issues, recommendations, and AI-generated insights.
-
-![Results](docs/screenshots/results.png)
+- Support additional image-generation providers
+- GIS integration
+- Interactive dashboards
+- Multi-language reports
+- Cost estimation for improvements
+- Compare multiple projects
+- Street-level analytics
+- Cloud deployment
 
 ---
 
-## Project History
+# 👤 Author
 
-> Browse previously analyzed projects and reopen them instantly.
+**Maysam Abduljalil**
 
-![History](docs/screenshots/history.png)
-
----
-
-## PDF Report
-
-> Download a professional urban assessment report in PDF format.
-
-![PDF Report](docs/screenshots/report.png)
+GitHub:
+https://github.com/maysamma
 
 ---
-
-# 🚀 Future Work
-
-The current version demonstrates the core capabilities of Canopy AI. Future improvements include:
-
-- Support additional AI vision providers.
-- Improve image-to-image urban visualization quality.
-- Add GIS and map integration.
-- Generate interactive dashboards.
-- Export reports in multiple formats.
-- Support multilingual reports.
-- Improve urban scoring using computer vision models.
-- Add authentication and user accounts.
-- Deploy the application to the cloud.
-
----
-
-# 👥 Team
-
-**Canopy AI** was developed as an AI-powered urban analysis platform for hackathon and educational purposes.
-
-Main responsibilities included:
-
-- AI Integration
-- Backend Development
-- Frontend Development
-- Database Design
-- PDF Report Generation
-- Urban Analysis Pipeline
-
----
-
-# 📄 License
-
-This project is released for educational and demonstration purposes.
 
 © 2026 Canopy AI
