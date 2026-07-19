@@ -193,6 +193,39 @@ def determine_heat_risk(
     return max(0, min(100, heat_risk))
 
 
+def calculate_overall_score(scores: dict) -> int:
+    green_coverage = normalize_score(
+        scores.get("green_coverage")
+    )
+    walkability = normalize_score(
+        scores.get("walkability")
+    )
+    shade = normalize_score(
+        scores.get("shade")
+    )
+    solar_potential = normalize_score(
+        scores.get("solar_potential")
+    )
+    heat_risk = normalize_score(
+        scores.get("heat_risk")
+    )
+
+    heat_comfort = 100 - heat_risk
+
+    weighted_score = (
+        green_coverage * 0.25
+        + walkability * 0.25
+        + shade * 0.25
+        + solar_potential * 0.10
+        + heat_comfort * 0.15
+    )
+
+    return max(
+        0,
+        min(100, round(weighted_score)),
+    )
+
+
 def generate_initial_issues(
     vision_result: dict,
     scores: dict,

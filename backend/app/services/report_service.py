@@ -10,6 +10,8 @@ from reportlab.lib.styles import (
     getSampleStyleSheet,
 )
 
+from app.services.analysis_service import calculate_overall_score
+
 from reportlab.lib.units import inch
 from reportlab.lib import colors
 
