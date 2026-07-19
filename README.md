@@ -749,14 +749,6 @@ The result is a faster, more accessible, and more intuitive urban analysis exper
 
 ---
 
-# 📄 License
-
-This project was developed as part of an AI innovation project focused on urban sustainability and intelligent decision support.
-
-It is intended for educational, research, and demonstration purposes.
-
----
-
 <p align="center">
 
 Made with ❤️ using FastAPI, React, Google Gemini, and SQLite.
