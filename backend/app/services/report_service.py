@@ -1272,7 +1272,7 @@ def generate_pdf_report(project: dict) -> Path:
         story.append(recommendation_card)
         story.append(Spacer(1, 12))
 
-        story.extend(
+    story.extend(
             [
                 Spacer(1, 2),
                 Paragraph(

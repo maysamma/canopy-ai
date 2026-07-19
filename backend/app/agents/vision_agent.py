@@ -23,39 +23,62 @@ Your task is to describe the current scene accurately and conservatively.
 Assess the following:
 
 1. Scene type
-   - Identify whether the image shows an urban street, residential area,
-     commercial area, public space, parking area, park, highway, rural road,
-     desert road, or another visible scene type.
+   - Return exactly one of these values:
+     "Urban Street", "Residential Street", "Commercial Street",
+     "Public Space", "Parking Area", "Park", "Urban Area",
+     or "Non-Urban Scene".
+   - Use "Non-Urban Scene" for highways, rural roads, desert roads,
+     natural landscapes, or scenes that are not suitable for urban assessment.
+   - Choose the most specific supported value visible in the image.
 
 2. Trees and vegetation
-   - Describe whether vegetation is absent, sparse, moderate, or abundant.
-   - Do not estimate exact percentages or exact numbers unless clearly visible.
+   - Return exactly one of these values:
+     "none", "very few", "few", "some", "many", or "unknown".
+   - Use "unknown" when the image does not provide enough visible evidence.
+   - Do not estimate exact percentages or exact numbers.
 
 3. Buildings
-   - Describe whether buildings are visible.
-   - Describe their general presence only, without guessing their use,
-     ownership, age, structural condition, or compliance.
+   - Return exactly one of these values:
+     "not visible", "limited", "partially visible",
+     "visible", "prominent", or "unknown".
+   - Base the value only on how clearly and extensively buildings appear.
+   - Use "unknown" when buildings cannot be assessed reliably.
+   - Do not guess building use, ownership, age, structural condition,
+     or regulatory compliance.
 
 4. Road
-   - State whether a road is visible.
-   - Describe only clearly visible characteristics such as paved, unpaved,
-     narrow, wide, divided, or unclear.
+   - Return exactly one of these values:
+     "not visible", "limited", "partially visible",
+     "visible", "prominent", or "unknown".
+   - Base the value only on how clearly and extensively the road appears.
+   - Use "unknown" when the road cannot be assessed reliably.
 
 5. Sidewalk
-   - State whether a sidewalk is visibly present, absent, partial, or unclear.
+   - Return exactly one of these values:
+     "not available", "limited", "partially available",
+     "available", "wide", or "unknown".
+   - Use "unknown" when the sidewalk cannot be assessed reliably.
    - Do not assume that a road shoulder is a sidewalk.
 
 6. Vehicles
-   - State whether vehicles are visibly present.
-   - Do not infer traffic volume from a single image.
+   - Return exactly one of these values:
+     "none", "very few", "few", "some", "many", or "unknown".
+   - Base the value only on vehicles clearly visible in the image.
+   - Do not infer traffic volume beyond the captured scene.
 
 7. Pedestrian shade
-   - Assess only visible shade from trees, buildings, canopies, or structures.
+   - Return exactly one of these values:
+     "none", "very low", "low", "medium", "high", or "unknown".
+   - Assess only shade visibly affecting pedestrian areas.
+   - Use "unknown" when pedestrian shade cannot be assessed reliably.
    - Do not infer shade at other times of day.
 
 8. Empty or underused space
+   - Return exactly one of these values:
+     "not available", "limited", "available", "large", or "unknown".
    - Identify only clearly visible vacant, unused, or potentially underused
      areas.
+   - Use "unknown" when the space cannot be assessed reliably.
    - Do not classify natural desert or undeveloped land as underused unless
      the scene clearly supports that conclusion.
 

@@ -358,19 +358,30 @@ def generate_initial_recommendations(
             }
         )
 
-    recommendations.append(
-        {
-            "title": "Evaluate solar-ready surfaces",
-            "action": (
-                "Review suitable rooftops and parking shade structures "
-                "for potential solar-panel installation."
-            ),
-            "impact": (
-                "Improved renewable-energy use and additional shaded surfaces."
-            ),
-            "priority": "Medium",
+    buildings = vision_result.get("buildings", "").lower()
+    scene_type = vision_result.get("scene_type", "").lower()
+
+    if (
+        buildings in {
+            "partially visible",
+            "visible",
+            "prominent",
         }
-    )
+        or scene_type == "parking area"
+    ):
+        recommendations.append(
+            {
+                "title": "Evaluate solar-ready surfaces",
+                "action": (
+                    "Review suitable rooftops and parking shade structures "
+                    "for potential solar-panel installation."
+                ),
+                "impact": (
+                    "Improved renewable-energy use and additional shaded surfaces."
+                ),
+                "priority": "Medium",
+            }
+        )
 
     return recommendations
 
