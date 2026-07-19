@@ -12,7 +12,6 @@
 ![React](https://img.shields.io/badge/React-61DAFB?logo=react)
 ![SQLite](https://img.shields.io/badge/SQLite-003B57?logo=sqlite)
 ![Gemini](https://img.shields.io/badge/Google-Gemini-orange)
-![License](https://img.shields.io/badge/License-Educational-success)
 
 </p>
 
@@ -172,21 +171,21 @@ The generated report includes:
 
 ## Home
 
-![Home](assets/home.png)
+![Home](backend/assets/home.png)
 
 ## Analysis Results
 
-![Results](assets/result.png)
+![Results](backend/assets/result.png)
 
 ## Project History
 
-![History](assets/history.png)
+![History](backend/assets/history.png)
 
 ## PDF Report
 
-![Report Cover](assets/report1.png)
+![Report Cover](backend/assets/report1.png)
 
-![Report Assessment & Recommendations ](assets/report2.png)
+![Report Assessment & Recommendations ](backend/assets/report2.png)
 ```
 
 ---
