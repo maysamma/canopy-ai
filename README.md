@@ -39,6 +39,10 @@ Canopy AI is intended as an early-stage decision-support tool for municipalities
 
 ---
 
+# Demo:
+https://drive.google.com/drive/folders/1-aYg7g4eNXsnGHDuWsJ28tSzbx0i9jbw?usp=sharing
+
+
 # ❗ Problem Statement
 
 Urban environment evaluation traditionally requires:
@@ -743,9 +747,21 @@ The result is a faster, more accessible, and more intuitive urban analysis exper
 
 ---
 
+## License
+
+This project is released under the MIT License.
+
+# Google Drive Link:
+https://drive.google.com/drive/folders/1IaM4pUQGd43LJsSbM2Adn0xY25WOVP6O?usp=sharing
+
 # 👤 Author
 
 **Maysam Abduljalil**
+
+- Email: maysamabduljalil@gmail.com
+- GitHub: https://github.com/maysamma
+- LinkedIn: https://www.linkedin.com/in/maysam-m-abduljalil
+
 
 ---
 
