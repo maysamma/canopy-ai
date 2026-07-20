@@ -655,20 +655,22 @@ Current version limitations:
 
 # 🗺 Roadmap
 
-- ✅ Urban image upload
-- ✅ AI-powered urban scene analysis
-- ✅ Sustainability assessment
-- ✅ Urban recommendations
-- ✅ Expected impact generation
-- ✅ AI visualization prompt generation
-- ✅ Professional PDF reports
-- ✅ SQLite project persistence
-- ✅ Project history
-- ✅ REST API
-- ⏳ Improved image generation
-- ⏳ Cloud deployment
-- ⏳ User authentication
-- ⏳ Interactive analytics dashboard
+### ✅ Completed
+
+- Urban image upload
+- AI-powered scene analysis
+- Sustainability assessment
+- Urban recommendations
+- AI visualization
+- Professional PDF reports
+- SQLite project persistence
+- Project history
+- RESTful API
+
+### 🚧 Next
+
+- Cloud deployment
+- User authentication
 
 ---
 
@@ -689,7 +691,6 @@ Future versions may include:
 - Before-and-after comparison tools
 - Neighborhood-scale analysis
 - Cloud storage
-- User accounts
 - Collaboration features
 - Municipal system integration
 
